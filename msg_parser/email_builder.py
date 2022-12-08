@@ -85,7 +85,7 @@ class EmailFormatter(object):
 
         eml_content = self.build_email()
 
-        file_name = file_name if file_name is not None else str(self.message["Subject"]) + ".eml"
+        file_name = file_name if file_name is not None else str(self.message["Subject"]).replace("/", '') + ".eml"
 
         eml_file_path = os.path.join(file_path, file_name)
 
