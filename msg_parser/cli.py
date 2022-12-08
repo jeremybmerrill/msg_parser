@@ -37,7 +37,7 @@ def create_parser(args):
         required=True,
         help="msg file path",
         metavar="FILE",
-        type=FileType(),
+#        type=FileType(),
     )
     parser.add_argument(
         "-j",
