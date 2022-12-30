@@ -9,7 +9,7 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
+from email.utils import parsedate_to_datetime
 
 class EmailFormatter(object):
     def __init__(self, msg_object):
@@ -85,7 +85,7 @@ class EmailFormatter(object):
 
         eml_content = self.build_email()
 
-        file_name = file_name if file_name is not None else str(self.message["Subject"]).replace("/", '') + ".eml"
+        file_name = file_name if file_name is not None else parsedate_to_datetime(self.msg_obj.sent_date).isoformat().replace(":", "_") + "_" + str(self.message["Subject"]).replace("/", '') + ".eml"
 
         eml_file_path = os.path.join(file_path, file_name)
 
